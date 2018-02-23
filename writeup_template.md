@@ -32,7 +32,6 @@ Separating line segments by their slope to decide which segments are part of the
 **Approach 2:**
 Divided the image vertically into two parts. Separating line segments by their position in the image to decide which segments are part of the left line vs. the right line. Extrapolated the lines using numpy.polyfit.
 
-### Shortcomings:
-
-
-### Improvements:
+### Shortcomings And Improvements:
+1. The lane lines detection should be stabilized, not to react immediately on substantial changes. I could try by retaining the history or previous positions of the line.
+2. Current algorithm does not perform well on curves. I could try fitting a more complex line using numpy.polyfit with higher polynomial degree. 
