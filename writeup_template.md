@@ -6,7 +6,7 @@ The goal of the project is to develop an algorithm to detect lane lines in an im
 
 ### Data Processing Pipeline:
 
-I have developed a processing pipeline that works on a series of individual images, and applied the result to a video stream. Implemented the algorithm using Python and OpenCV.
+I have developed a processing pipeline that works on a series of individual images and applied the result to a video stream. Implemented the algorithm using Python and OpenCV.
 
 **Pipeline Architecture:**
 
@@ -20,36 +20,19 @@ I have developed a processing pipeline that works on a series of individual imag
 6. Draw the lane line using the approach described below.
 8. Combine initial image with lane lines image to get the final result.
 
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
 ---
 
-### Reflection
+### Averaging and Extrapolating the lane lines:
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+I have taken two approaches to map out the full extent of the lane.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+**Approach 1:**
+Separating line segments by their slope to decide which segments are part of the left line vs. the right line. Then, you can average the position of each of the lines and extrapolate to the top and bottom of the lane.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+**Approach 2:**
+Divided the image vertically into two parts. Separating line segments by their position in the image to decide which segments are part of the left line vs. the right line. Extrapolated the lines using numpy.polyfit.
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
-
-
-### 2. Identify potential shortcomings with your current pipeline
+### Shortcomings:
 
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+### Improvements:
