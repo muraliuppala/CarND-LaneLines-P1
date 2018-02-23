@@ -1,16 +1,24 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
+The goal of the project is to develop an algorithm to detect lane lines in an image and video stream. 
 
 ---
 
-**Finding Lane Lines on the Road**
+### Data Processing Pipeline:
 
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
+I have developed a processing pipeline that works on a series of individual images, and applied the result to a video stream. Implemented the algorithm using Python and OpenCV.
+
+**Pipeline Architecture:**
+
+1. Load the images.
+2. Apply Grayscale transform that will only return an image with one channel
+2. Apply Gaussian smoothing to the gray scale image to suppress noise and spurious gradients by averaging
+3. Apply Canny transform to detect edges.
+4. Apply Image masking to extract region of interest.
+5. Apply Hough Transform to detect the lines.
+6. Prepare a black image on which lane lines will be drawn.
+6. Draw the lane line using the approach described below.
+8. Combine initial image with lane lines image to get the final result.
 
 
 [//]: # (Image References)
